@@ -1,16 +1,44 @@
-# React + Vite
+# E-Commerce GenAI Analytics
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+An end-to-end e-commerce analytics project that combines Python ETL, historical currency exchange rates, Google BigQuery, SQL analytics, and Generative AI to enable natural-language data analysis.
 
-Currently, two official plugins are available:
+## 📌 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project processes historical e-commerce orders from multiple countries and currencies and transforms them into an analytics-ready data warehouse.
 
-## React Compiler
+The pipeline:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Cleans and validates raw e-commerce data
+- Integrates historical foreign exchange rates
+- Converts transaction revenue into USD
+- Handles changing customer segments using SCD Type 2
+- Builds a dimensional star schema
+- Loads data into Google BigQuery
+- Performs analytical queries using SQL
+- Uses Generative AI to convert natural-language questions into SQL
+- Provides a React-based chatbot interface through FastAPI
 
-## Expanding the Oxlint configuration
+## 🏗️ Architecture
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```text
+E-Commerce Orders
+       ↓
+   Python ETL
+       ↓
+Historical FX API
+       ↓
+Data Cleaning & Validation
+       ↓
+    Star Schema
+       ↓
+    BigQuery
+       ↓
+  SQL Analytics
+       ↓
+    GenAI Layer
+       ↓
+ Natural Language
+       ↓
+    FastAPI
+       ↓
+ React Chatbot
